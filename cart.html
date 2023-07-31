@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+
+        body{
+            background-color: rgba(255, 153, 0, 0.548);
+        }
+        footer {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            color: rgb(0, 0, 0);
+            text-align: center;
+            background-color: rgba(89, 12, 12, 0);
+        }
+
+        .topnav {
+            overflow: hidden;
+            display: flex;
+            right:0;
+            text-align: center;
+        }
+
+        .topnav a {
+            float: left;
+            color: #f2f2f2;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            font-size: 26px;
+            color:rgb(77, 35, 5) ;
+        }
+
+        .topnav a:hover {
+           
+            color: rgb(27, 128, 201);
+        }
+
+        .topnav a.active {
+            
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="topnav">
+        
+       
+        <a href="home.html">Home</a>
+        <a  href="shop.html">Shop</a>
+        <a href="aboutUs.html">About Us</a>
+        <a href="ContactUs.html">Contact Us</a>
+        <a href="details.html">Details</a>
+        <a class="active" href="cart.html">Cart</a>
+    </div>
+
+    <!-- Sample product cards with Add to Cart button -->
+    <div class="product-card">
+        <h2>Aura V Neck Waist Belted Dress</h2>
+        <p>Price: Rs. 2500</p>
+        <button onclick="addToCart(2500)">Add to Cart</button>
+    </div>
+
+    <div class="product-card">
+        <h2>Tendenza Embroidered Linen Shift Dress</h2>
+        <p>Price: Rs. 2500</p>
+        <button onclick="addToCart(2500)">Add to Cart</button>
+    </div>
+
+    <div class="product-card">
+        <h2>Aura Slit Detailed Printed Midi Dress</h2>
+        <p>Price: Rs. 1900</p>
+        <button onclick="addToCart(1900)">Add to Cart</button>
+    </div>
+
+    <div class="product-card">
+        <h2>Aura Two Way Layered Maxi Dress</h2>
+        <p>Price: Rs. 1900</p>
+        <button onclick="addToCart(1900)">Add to Cart</button>
+    </div>
+
+    <!-- Shopping Cart -->
+    <div class="shopping-cart">
+        <h2>Shopping Cart</h2>
+        <ul id="cart-items">
+            <!-- Cart items will be dynamically added here -->
+        </ul>
+        <p>Total: $<span id="total-price">0</span></p>
+    </div>
+
+
+    <script>
+        let cartItems = [];
+        let totalPrice = 0;
+
+        function addToCart(price) {
+            cartItems.push(price);
+            totalPrice += price;
+            updateCartUI();
+        }
+
+        function updateCartUI() {
+            const cartItemsList = document.getElementById('cart-items');
+            const totalDisplay = document.getElementById('total-price');
+
+            cartItemsList.innerHTML = '';
+            cartItems.forEach((itemPrice) => {
+                const li = document.createElement('li');
+                li.textContent = '$' + itemPrice;
+                cartItemsList.appendChild(li);
+            });
+
+            totalDisplay.textContent = totalPrice;
+        }
+
+    </script>
+
+
+    <footer>
+        <p>Shop</p>
+    </footer>
+</body>
+
+</html>
